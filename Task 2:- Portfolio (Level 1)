@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Pavan Shetty | Web Developer</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="home">
+            <div class="hero">
+                <img src="profile.jpg" alt="Pavan Shetty" class="profile-pic">
+                <h1>Pavan Shetty</h1>
+                <p class="tagline">Crafting Digital Experiences | Full Stack Developer</p>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I'm a dedicated web developer with a passion for creating elegant, efficient solutions. My keen eye for detail and drive for innovation help me deliver outstanding digital experiences.</p>
+        </section>
+
+        <section id="portfolio">
+            <h2>Featured Work</h2>
+            <div class="project-grid">
+                <article class="project-card">
+                    <img src="project1.jpg" alt="Responsive Business Website">
+                    <h3>Responsive Business Site</h3>
+                    <p>A fully responsive website designed and developed for a local enterprise, focusing on user experience and modern design principles.</p>
+                </article>
+                <article class="project-card">
+                    <img src="project2.jpg" alt="Interactive Portfolio">
+                    <h3>Interactive Portfolio</h3>
+                    <p>A dynamic, JavaScript-powered portfolio showcasing my projects with interactive elements and smooth animations.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Get in Touch</h2>
+            <div class="contact-info">
+                <p>Email: <a href="mailto:pavanshetty6228@gmail.com">pavanshetty6228@gmail.com</a></p>
+                <p>Phone: <a href="tel:808039260">808039260</a></p>
+            </div>
+            <a href="resume.pdf" download class="cta-button">Download CV</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Aditya Konda. All rights reserved.</p>
+    </footer>
+<script src="script.js"></script>
+</body>
+</body>
+</html>
+
+*****************************************************************************************************************************************************************
+
+#css code
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #e74c3c;
+    --text-color: #333;
+    --bg-color: #ecf0f1;
+    --card-bg: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+nav {
+    background-color: var(--primary-color);
+    padding: 1rem;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.profile-pic {
+    width: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.tagline {
+    font-style: italic;
+}
+
+section {
+    padding: 4rem 2rem;
+}
+
+h2 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-card h3, .project-card p {
+    padding: 1rem;
+}
+
+.contact-info {
+    margin-bottom: 1rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #c0392b;
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+***********************************************************************************************************************************
+
+#Javascript
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    window.addEventListener('scroll', function() {
+        let scrollPosition = window.scrollY;
+
+        document.querySelectorAll('main section').forEach(section => {
+            if (scrollPosition >= section.offsetTop - 100 && 
+                scrollPosition < (section.offsetTop + section.offsetHeight - 100)) {
+                let currentId = section.getAttribute('id');
+                document.querySelectorAll('nav a').forEach(a => {
+                    a.classList.remove('active');
+                    if (a.getAttribute('href') === '#' + currentId) {
+                        a.classList.add('active');
+                    }
+                });
+            }
+        });
+    });
+
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+            }
+        });
+    }, { threshold: 0.5 });
+
+    projectCards.forEach(card => {
+        observer.observe(card);
+    });
+
+    // Form submission handling (assuming you add a contact form later)
+    const contactForm = document.querySelector('#contact form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would typically handle the form submission,
+            // perhaps with an AJAX call to your server
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+    }
+
+    const currentYear = new Date().getFullYear();
+    document.querySelector('footer p').textContent = `© ${currentYear} Aditya Konda. All rights reserved.`;
+
+    window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+    });
+
+});
