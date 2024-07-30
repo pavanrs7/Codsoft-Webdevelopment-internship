@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tribute to Marie Curie</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#biography">Biography</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#quotes">Quotes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Marie Curie</h1>
+                <p>Pioneer in Radioactivity</p>
+            </div>
+        </section>
+
+        <section id="biography">
+            <h2>Biography</h2>
+            <div class="bio-content">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Marie_Curie_c1920.jpg/800px-Marie_Curie_c1920.jpg" alt="Marie Curie" class="bio-image">
+                <p>Marie Skłodowska Curie (1867-1934) was a Polish and naturalized-French physicist and chemist who conducted pioneering research on radioactivity. She was the first woman to win a Nobel Prize, the first person and only woman to win the Nobel Prize twice, and the only person to win the Nobel Prize in two scientific fields.</p>
+            </div>
+        </section>
+
+        <section id="achievements">
+            <h2>Key Achievements</h2>
+            <ul>
+                <li>Discovered polonium and radium</li>
+                <li>Developed techniques for isolating radioactive isotopes</li>
+                <li>Nobel Prize in Physics (1903)</li>
+                <li>Nobel Prize in Chemistry (1911)</li>
+                <li>Founded the Curie Institutes in Paris and Warsaw</li>
+            </ul>
+        </section>
+
+        <section id="gallery">
+            <h2>Gallery</h2>
+            <div class="gallery-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Marie_Curie_in_laboratory.jpg/800px-Marie_Curie_in_laboratory.jpg" alt="Marie Curie in laboratory">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Marie_Sklodowska_Curie_%281867-1934%29%2C_Polish-French_physicist%2C_c_1920.jpg/800px-Marie_Sklodowska_Curie_%281867-1934%29%2C_Polish-French_physicist%2C_c_1920.jpg" alt="Marie Curie portrait">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Portrait_of_Marie_Curie.jpg/800px-Portrait_of_Marie_Curie.jpg" alt="Marie Curie young">
+            </div>
+        </section>
+
+        <section id="quotes">
+            <h2>Inspiring Quotes</h2>
+            <div class="quote-container">
+                <blockquote id="quote-display"></blockquote>
+                <button id="new-quote">New Quote</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Tribute to Marie Curie. Created with admiration.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+*********************************************************************************************
+
+#css code
+
+:root {
+    --primary-color: #3a0ca3;
+    --secondary-color: #f72585;
+    --bg-color: #f0f0f0;
+    --text-color: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+header {
+    background-color: var(--primary-color);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--secondary-color);
+}
+
+main {
+    padding-top: 60px;
+}
+
+section {
+    padding: 4rem 2rem;
+}
+
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 1rem;
+}
+
+#hero {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Marie_Curie_Tekniska_museet.jpg/1280px-Marie_Curie_Tekniska_museet.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+
+.hero-content {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+}
+
+.bio-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.bio-image {
+    width: 300px;
+    border-radius: 50%;
+}
+
+#achievements ul {
+    list-style-type: none;
+}
+
+#achievements li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+#achievements li::before {
+    content: '•';
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: -0.3rem;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-container img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.gallery-container img:hover {
+    transform: scale(1.05);
+}
+
+.quote-container {
+    text-align: center;
+}
+
+blockquote {
+    font-style: italic;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+button {
+    background-color: var(--secondary-color);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #d61a6f;
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+@media (max-width: 768px) {
+    .bio-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .bio-image {
+        width: 200px;
+    }
+}
+
+******************************************************************************************************
+
+#Javascript
+
+document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('main section');
+    const quoteDisplay = document.getElementById('quote-display');
+    const newQuoteBtn = document.getElementById('new-quote');
+
+    // Smooth scrolling
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // Highlight active nav item
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= sectionTop - 60) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').substring(1) === current) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // Quotes functionality
+    const quotes = [
+        "Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less.",
+        "I am among those who think that science has great beauty.",
+        "Be less curious about people and more curious about ideas.",
+        "One never notices what has been done; one can only see what remains to be done.",
+        "I was taught that the way of progress was neither swift nor easy."
+    ];
+
+    function displayRandomQuote() {
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        quoteDisplay.textContent = quotes[randomIndex];
+    }
+
+    displayRandomQuote();
+    newQuoteBtn.addEventListener('click', displayRandomQuote);
+
+    // Image lazy loading
+    const images = document.querySelectorAll('img');
+    const imgOptions = {
+        threshold: 0,
+        rootMargin: "0px 0px 300px 0px"
+    };
+
+    const imgObserver = new IntersectionObserver((entries, imgObserver) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const img = entry.target;
+            img.src = img.src; // This triggers the image to load
+            imgObserver.unobserve(img);
+        });
+    }, imgOptions);
+
+    images.forEach(img => imgObserver.observe(img));
+});
